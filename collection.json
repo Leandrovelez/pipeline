@@ -7,6 +7,37 @@
   },
   "item": [
     {
+      "name": "Cria usuário para o login",
+      "item": [
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nome\": \"Michele Botelho QA\",\r\n  \"email\": \"michelebotelho@qa.com\",\r\n  \"password\": \"testeQaMichele\",\r\n  \"administrador\": \"true\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "1. Login",
       "item": [
         {
