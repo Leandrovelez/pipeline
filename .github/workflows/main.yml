@@ -5,21 +5,25 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      - name: Checkout do Código
+        uses: actions/checkout@v4 # Atualizado para v4
 
-      - name: Install Newman and Reporter
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4 # Atualizado para v4
+        with:
+          node-version: 20 # Usando versão LTS atualizada
+
+      - name: Instalar Newman e Reporter HTML
         run: npm install -g newman newman-reporter-htmlextra
 
-      - name: Run API Tests
-        # Se usar environment, adicione -e environment.json
+      - name: Executar Testes da API
+        # Adicionado o --delay-request conforme discutimos para evitar o Rate Limit
         run: newman run collection.json --delay-request 500 -r cli,htmlextra --reporter-htmlextra-export report.html
 
-      - name: Upload Report
-        if: always()
-        uses: actions/upload-artifact@v3
+      - name: Upload do Relatório (Artefato)
+        if: always() # Garante que o relatório suba mesmo se os testes falharem
+        uses: actions/upload-artifact@v4 # CORREÇÃO AQUI: Atualizado para v4
         with:
           name: api-test-report
           path: report.html
+          retention-days: 5 # Opcional: mantém o arquivo por 5 dias
