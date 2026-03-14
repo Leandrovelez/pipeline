@@ -1,0 +1,40 @@
+{
+	"id": "2cafc130-b1dc-471f-9548-de0440333759",
+	"name": "Banco Carrefour",
+	"values": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "user_email_cadastrado",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "token_jwt",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-03-14T03:24:21.579Z",
+	"_postman_exported_using": "Postman/11.88.4"
+}

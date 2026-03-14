@@ -1,0 +1,25 @@
+name: API Automation Tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Newman and Reporter
+        run: npm install -g newman newman-reporter-htmlextra
+
+      - name: Run API Tests
+        # Se usar environment, adicione -e environment.json
+        run: newman run collection.json --delay-request 500 -r cli,htmlextra --reporter-htmlextra-export report.html
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-test-report
+          path: report.html
